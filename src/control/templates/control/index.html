@@ -1,5 +1,9 @@
 {% extends "control/base.html" %}
 
 {% block contenido %}
-    <h1>Bienvenido</h1>
+    <h1>Registro Financiero</h1>
+    <p>Registre sus finanzas personales</p>
+    <a href="{% url "control:form_ingresos" %}"><button>Registro Ingresos</button></a>
+    <a href="{% url "control:form_egresos" %}"><button>Registro Egresos</button></a>
+    <a href="{% url "control:form_deuda" %}"><button>Registro Deudas</button></a>
 {% endblock contenido %}

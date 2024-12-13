@@ -1,0 +1,13 @@
+{% extends "control/base.html" %}
+
+{% block contenido %}
+    <h1>Registro de Ingresos</h1>
+    <a href="{% url "control:vista_ingresos" %}"><button>Ver Registros</button></a>
+    <a href="{% url "control:index" %}"><button>Inicio</button></a>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">"Guardar"</button>
+    </form>
+{% endblock contenido %}
+

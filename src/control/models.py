@@ -12,8 +12,10 @@ class ingresos(models.Model):
         ("Efectivo","Efectivo"),
     ]
     tipo = models.CharField(max_length=15, choices=tipo_choice)
+
     fecha_ingreso = models.DateField()
     valor_ingreso = models.IntegerField()
+    
 
 class egresos(models.Model):
     gasto_choice = [
@@ -27,12 +29,13 @@ class egresos(models.Model):
     ]
     gasto = models.CharField(max_length=20, choices=gasto_choice)
     fuente_choice = [
-        ("Itau","Itau"),
-        ("Scotiabank","Scotiabank"),
+        ("Cuenta Corriente","Cuenta Corriente"),
+        ("Efectivo","Efectivo"),
     ]
-    fuente = models.CharField(max_length=15, choices=fuente_choice)
+    fuente = models.CharField(max_length=20, choices=fuente_choice)
     fecha_gasto = models.DateField()
     valor_gasto = models.IntegerField()
+
 
 class deuda(models.Model):
     deudas_choice = [
@@ -48,7 +51,7 @@ class deuda(models.Model):
         ("Scotiabank","Scotiabank"),
         ("Familia","Familia"),
     ]
-    entidad = models.CharField(max_length=15, choices=entidad_choice)
+    entidad = models.CharField(max_length=20, choices=entidad_choice)
     fecha_deuda = models.DateField()
     valor_deuda = models.IntegerField()
     cuotas = models.IntegerField()

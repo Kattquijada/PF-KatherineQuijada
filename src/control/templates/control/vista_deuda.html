@@ -1,0 +1,29 @@
+{% extends "control/base.html" %}
+
+{% block contenido %}
+    <h1> Historico Deudas </h1>
+    <a href="{% url "control:index" %}"><button>Inicio</button></a>
+    <a href="{% url "control:form_deuda" %}"><button>Registro</button></a>    
+    <table>
+        <thead>
+            <tr>
+                <th>Deuda</th>
+                <th>Entidad</th>
+                <th>Fecha Compromiso</th>
+                <th>Monto ($)</th>
+                <th>Cuotas</th>
+            </tr>
+        </thead>
+        <body>
+            {% for object in object_list %}
+            <tr>    
+                <td> {{object.deudas}}</td>
+                <td> {{object.entidad}}</td>
+                <td> {{object.fecha_deuda}}</td>
+                <td> {{object.valor_deuda}}</td>
+                <td> {{object.cuotas}}</td>
+            </tr>    
+            {% endfor %}
+        </body>
+    </table>
+{% endblock contenido %}

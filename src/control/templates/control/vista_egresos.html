@@ -1,0 +1,27 @@
+{% extends "control/base.html" %}
+
+{% block contenido %}
+    <h1> Historico Egresos </h1>
+    <a href="{% url "control:index" %}"><button>Inicio</button></a>
+    <a href="{% url "control:form_egresos" %}"><button>Registro</button></a>    
+    <table>
+        <thead>
+            <tr>
+                <th>Gasto</th>
+                <th>Fuente</th>
+                <th>Fecha Egreso</th>
+                <th>Monto ($)</th>
+            </tr>
+        </thead>
+        <body>
+            {% for object in object_list %}
+            <tr>    
+                <td> {{object.gasto}}</td>
+                <td> {{object.fuente}}</td>
+                <td> {{object.fecha_gasto}}</td>
+                <td> {{object.valor_gasto}}</td>
+            </tr>    
+            {% endfor %}
+        </body>
+    </table>
+{% endblock contenido %}

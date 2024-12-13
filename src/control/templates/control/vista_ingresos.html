@@ -1,0 +1,27 @@
+{% extends "control/base.html" %}
+
+{% block contenido %}
+    <h1> Historico Ingresos </h1>
+    <a href="{% url "control:index" %}"><button>Inicio</button></a>
+    <a href="{% url "control:form_ingresos" %}"><button>Registro</button></a>    
+    <table>
+        <thead>
+            <tr>
+                <th>Origen</th>
+                <th>Tipo</th>
+                <th>Fecha Ingreso</th>
+                <th>Monto ($)</th>
+            </tr>
+        </thead>
+        <body>
+            {% for object in object_list %}
+            <tr>    
+                <td> {{object.origen}}</td>
+                <td> {{object.tipo}}</td>
+                <td> {{object.fecha_ingreso}}</td>
+                <td> {{object.valor_ingreso}}</td>
+            </tr>    
+            {% endfor %}
+        </body>
+    </table>
+{% endblock contenido %}
