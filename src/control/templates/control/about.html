@@ -1,6 +1,9 @@
 {% extends "control/base.html" %}
 
 {% block contenido %}
-    <h1>Bienvenido</h1>
-    <p>Registro financiero</p>
+    <h1>Acerca de mi</h1>
+    <a href="{% url "control:index" %}"><button>Inicio</button></a>
+    <p>Soy Katherine Quiajda, Ingeniero Comercial de profesión y alumna de CoderHouse en el curso de Python comisión 60095.</p>
+    <p>Esta página presenta mi proyecto final para acceder a la certificación del curso, 
+        y en consiste en un programa básico para el registro de finanzas personales. </p>
 {% endblock contenido %}
