@@ -1,0 +1,12 @@
+{% extends "control/base.html" %}
+
+{% block contenido %}
+    <h1>Vista en Detalle: Ingresos</h1>
+    <ul>
+        <li><strong>Nombre:</strong>{{object.origen}}</li>
+        <li><strong>Tipo:</strong>{{object.tipo}}</li>
+        <li><strong>Fecha:</strong>{{object.fecha_ingreso}}</li>
+        <li><strong>Valor:</strong>{{object.valor_ingreso}}</li>
+    </ul>
+    <a href={% url "control:vista_ingresos" %}><button>Volver</button></a>
+{% endblock contenido %}

@@ -1,0 +1,12 @@
+{% extends "control/base.html" %}
+
+{% block contenido %}
+    <h1>Eliminar Registro: Egresos</h1>
+    <p>¿Seguro que desea eliminar el registro?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sí, eliminar</button>
+
+    </form>
+    <a href={% url "control:vista_ingresos" %}><button>Volver</button></a>
+{% endblock contenido %}

@@ -3,14 +3,24 @@
 {% block contenido %}
     <h1> Historico Ingresos </h1>
     <a href="{% url "control:index" %}"><button>Inicio</button></a>
-    <a href="{% url "control:form_ingresos" %}"><button>Registro</button></a>    
-    <table>
+    <a href="{% url "control:form_ingresos" %}"><button>Registro</button></a>
+    {% if messages %}{% for message in messages %}{{ message }}{% endfor %}{% endif %}   
+    
+    <form method="get">
+        <div style="border: 1px solid #ccc; padding: 5px;"> {{ form.as_p }}
+            <button type="submit">Filtrar</button>
+            <a href="{% url 'control:vista_egresos' %}">Limpiar Filtro</a>
+        </div>
+    </form>
+    
+    <table style="margin: 20px auto;" border=2>
         <thead>
             <tr>
                 <th>Origen</th>
                 <th>Tipo</th>
                 <th>Fecha Ingreso</th>
                 <th>Monto ($)</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <body>
@@ -20,6 +30,17 @@
                 <td> {{object.tipo}}</td>
                 <td> {{object.fecha_ingreso}}</td>
                 <td> {{object.valor_ingreso}}</td>
+                <td> 
+                    <a href={% url "control:detail_ingresos" object.id %}>
+                        <button>Ver</button>
+                    </a>
+                    <a href={% url "control:update_ingresos" object.id %}>
+                        <button>Editar</button>
+                    </a>
+                    <a href={% url "control:delete_ingresos" object.id %}>
+                        <button>Eliminar</button>
+                    </a>
+                </td>    
             </tr>    
             {% endfor %}
         </body>

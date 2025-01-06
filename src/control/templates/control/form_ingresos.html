@@ -1,13 +1,19 @@
 {% extends "control/base.html" %}
 
 {% block contenido %}
-    <h1>Registro de Ingresos</h1>
+    {% if form.instance.pk %}
+        <h1>Edición de Registros</h1>
+    {% else %}
+        <h1>Registro de Ingresos</h1>    
+    {% endif %}
     <a href="{% url "control:vista_ingresos" %}"><button>Ver Registros</button></a>
     <a href="{% url "control:index" %}"><button>Inicio</button></a>
+    <div>
+        {% if messages %}{% for message in messages %}{{ message }}{% endfor %}{% endif %}   
     <form method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">"Guardar"</button>
+        <button type="submit">Guardar</button>
     </form>
+    </div>
 {% endblock contenido %}
-

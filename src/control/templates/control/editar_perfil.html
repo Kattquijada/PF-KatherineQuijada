@@ -1,0 +1,15 @@
+{% extends "control/base.html" %}
+{% load static %}
+
+{%block contenido%}
+    <h1>Actualización Datos de Usuario</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">Actualizar Datos</button>
+    </form>
+    <p>
+        <a href="{% url 'control:perfil' %}">Volver a Perfil</a>
+    </p>
+
+{%endblock contenido%}

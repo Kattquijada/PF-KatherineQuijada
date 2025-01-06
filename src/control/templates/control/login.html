@@ -1,0 +1,15 @@
+{% extends "control/base.html" %}
+{% load static %}
+
+{%block contenido%}
+    <h1>Iniciar Sesión</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">Acceder</button>
+    </form>
+    <p>
+       ¿Nuevo Aquí? <a href="{% url 'control:registro' %}">Registrate</a>
+    </p>
+
+{%endblock contenido%}

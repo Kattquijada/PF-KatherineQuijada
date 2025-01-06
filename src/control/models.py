@@ -1,21 +1,23 @@
 from django.db import models
+from django.contrib.auth.models import User 
 
 # Create your models here.
+
+
 class ingresos(models.Model):
     origen_choice = [
         ("Sueldo","Sueldo"),
         ("Otro","Otro"),
     ]
-    origen = models.CharField(max_length=6, choices=origen_choice)
     tipo_choice = [
         ("Cta Corriente","Cuenta Corriente"),
         ("Efectivo","Efectivo"),
     ]
+    origen = models.CharField(max_length=6, choices=origen_choice)
     tipo = models.CharField(max_length=15, choices=tipo_choice)
-
     fecha_ingreso = models.DateField()
-    valor_ingreso = models.IntegerField()
-    
+    valor_ingreso = models.PositiveIntegerField()
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class egresos(models.Model):
     gasto_choice = [
@@ -27,15 +29,16 @@ class egresos(models.Model):
         ("Caprichos","Caprichos"),
         ("Otros","Otros"),
     ]
-    gasto = models.CharField(max_length=20, choices=gasto_choice)
     fuente_choice = [
         ("Cuenta Corriente","Cuenta Corriente"),
         ("Efectivo","Efectivo"),
     ]
+    gasto = models.CharField(max_length=20, choices=gasto_choice)
     fuente = models.CharField(max_length=20, choices=fuente_choice)
     fecha_gasto = models.DateField()
-    valor_gasto = models.IntegerField()
-
+    valor_gasto = models.PositiveIntegerField()
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    
 
 class deuda(models.Model):
     deudas_choice = [
@@ -45,13 +48,15 @@ class deuda(models.Model):
         ("Prestamos","Prestamos"),
         ("Otros","Otros"),
     ]
-    deudas = models.CharField(max_length=20, choices=deudas_choice)
     entidad_choice = [
         ("Itau","Itau"),
         ("Scotiabank","Scotiabank"),
-        ("Familia","Familia"),
+        ("Particulares","Particulares"),
+        ("Otro","Otro")
     ]
+    deudas = models.CharField(max_length=20, choices=deudas_choice)
     entidad = models.CharField(max_length=20, choices=entidad_choice)
     fecha_deuda = models.DateField()
-    valor_deuda = models.IntegerField()
-    cuotas = models.IntegerField()
+    valor_deuda = models.PositiveIntegerField()
+    cuotas = models.PositiveIntegerField()
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)

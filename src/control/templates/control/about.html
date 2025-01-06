@@ -1,9 +1,14 @@
 {% extends "control/base.html" %}
+{% load static %}
 
 {% block contenido %}
     <h1>Acerca de mi</h1>
     <a href="{% url "control:index" %}"><button>Inicio</button></a>
-    <p>Soy Katherine Quiajda, Ingeniero Comercial de profesión y alumna de CoderHouse en el curso de Python comisión 60095.</p>
+    <p>Soy Katherine Quijada, Ingeniero Comercial de profesión y alumna de CoderHouse en el curso de Python comisión 60095.</p>
     <p>Esta página presenta mi proyecto final para acceder a la certificación del curso, 
-        y en consiste en un programa básico para el registro de finanzas personales. </p>
+    y consiste en un programa básico para el registro de finanzas personales. </p>
+    <div class="text-center">
+        <img src="{% static 'control/img/about.jpeg' %}" alt="Imagen Principal" 
+             class="img-fluid mb-4" style="max-height: 300px;">
+    </div>
 {% endblock contenido %}

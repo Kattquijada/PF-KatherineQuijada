@@ -1,0 +1,13 @@
+{% extends "control/base.html" %}
+
+{% block contenido %}
+    <h1>Vista en Detalle: Ingresos</h1>
+    <ul>
+        <li><strong>Nombre:</strong>{{object.deudas}}</li>
+        <li><strong>Tipo:</strong>{{object.entidad}}</li>
+        <li><strong>Fecha:</strong>{{object.fecha_deuda}}</li>
+        <li><strong>Valor:</strong>{{object.valor_deuda}}</li>
+        <li><strong>Cuotas:</strong>{{object.valor_cuotas}}</li>
+    </ul>
+    <a href={% url "control:vista_ingresos" %}><button>Volver</button></a>
+{% endblock contenido %}

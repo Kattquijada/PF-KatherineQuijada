@@ -1,13 +1,16 @@
 {% extends "control/base.html" %}
 
 {% block contenido %}
-    <h1>Registro de Deudas</h1>
+    <h1>Registro de Deudas</h1>   
     <a href="{% url "control:vista_deuda" %}"><button>Ver Registros</button></a>
     <a href="{% url "control:index" %}"><button>Inicio</button></a>
+    <div>
+        {% if messages %}{% for message in messages %}{{ message }}{% endfor %}{% endif %}    
     <form method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">"Guardar"</button>
+        <button type="submit">Guardar</button>
+    </div>
     </form>
 {% endblock contenido %}
 

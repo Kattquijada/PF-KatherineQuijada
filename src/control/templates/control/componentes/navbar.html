@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'control:index' %}">Control Financiero</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item d-flex align-items-center">
+                    <a class="nav-link" href="{% url 'control:about' %}">Acerca de Mi</a>
+                </li>
+                <li class="nav-item d-flex align-items-center">    
+                    {% if  user.is_authenticated%} 
+                    <span class="nav-link">Hola, {{ user.username }}</span>
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link" href="{% url 'control:perfil' %}">Perfil</a>
+                    </li>
+                    <form action="{% url "control:logout" %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-light">Cerrar Sesión</button></a>
+                    </form>
+                    {% else %}
+                    <a class="nav-link" href="{% url 'control:login' %}">Iniciar Sesión</a>
+                    {% endif %}
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
